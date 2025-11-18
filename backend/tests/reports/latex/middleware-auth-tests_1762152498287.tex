@@ -1,0 +1,143 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+
+\geometry{margin=1in}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[height=0.4cm]{Loomio.png} middleware-auth-tests}
+\rhead{2025-11-03T06-48-18}
+\cfoot{\thepage}
+
+\definecolor{passcolor}{RGB}{46, 125, 50}
+\definecolor{failcolor}{RGB}{198, 40, 40}
+\definecolor{skipcolor}{RGB}{255, 152, 0}
+\definecolor{codebackground}{RGB}{245, 245, 245}
+
+\lstset{
+  backgroundcolor=\color{codebackground},
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  showstringspaces=false
+}
+
+\title{
+  \includegraphics[width=2.5cm]{Loomio.png}\\
+  \vspace{0.3cm}
+  \textbf{Test Suite Report}\\
+  auth.test.js
+}
+\author{
+  \textbf{Tested by:} J V Kousthub\\
+  \vspace{0.2cm}
+  \textbf{Date:} November 3, 2025\\
+  \textbf{Time:} 12:18:31 PM
+}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\vspace{0.5cm}
+\begin{center}
+\textbf{Database:} PostgreSQL on Render\\
+\textbf{Backend:} https://loomio.onrender.com
+\end{center}
+
+\newpage
+
+\section{Suite Information}
+\begin{itemize}
+  \item \textbf{File:} \texttt{D:\textbackslash\{\}Loomio\textbackslash\{\}Loomio\textbackslash\{\}backend\textbackslash\{\}tests\textbackslash\{\}unit\textbackslash\{\}middleware\textbackslash\{\}auth.test.js}
+  \item \textbf{Run ID:} 1762152498287
+  \item \textbf{Execution Time:} 2408 ms
+\end{itemize}
+
+\section{Test Results Summary}
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+\textbf{Status} & \textbf{Count} \\
+\midrule
+\textcolor{passcolor}{Passed} & 7 \\
+\textcolor{failcolor}{Failed} & 0 \\
+\textcolor{skipcolor}{Skipped} & 0 \\
+\midrule
+Total & 7 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Individual Test Cases}
+
+\subsection{Test 1: Auth Middleware Unit Tests authenticateToken should authenticate valid token}
+\textbf{Status:} \textcolor{passcolor}{PASSED}\\
+\textbf{Duration:} 25 ms
+
+\textcolor{passcolor}{\checkmark~Test passed successfully}
+
+
+\subsection{Test 2: Auth Middleware Unit Tests authenticateToken should reject request without token}
+\textbf{Status:} \textcolor{passcolor}{PASSED}\\
+\textbf{Duration:} 1 ms
+
+\textcolor{passcolor}{\checkmark~Test passed successfully}
+
+
+\subsection{Test 3: Auth Middleware Unit Tests authenticateToken should reject invalid token}
+\textbf{Status:} \textcolor{passcolor}{PASSED}\\
+\textbf{Duration:} 1 ms
+
+\textcolor{passcolor}{\checkmark~Test passed successfully}
+
+
+\subsection{Test 4: Auth Middleware Unit Tests authenticateToken should reject expired token}
+\textbf{Status:} \textcolor{passcolor}{PASSED}\\
+\textbf{Duration:} 4 ms
+
+\textcolor{passcolor}{\checkmark~Test passed successfully}
+
+
+\subsection{Test 5: Auth Middleware Unit Tests authorize should authorize user with correct role}
+\textbf{Status:} \textcolor{passcolor}{PASSED}\\
+\textbf{Duration:} 0 ms
+
+\textcolor{passcolor}{\checkmark~Test passed successfully}
+
+
+\subsection{Test 6: Auth Middleware Unit Tests authorize should reject user with insufficient role}
+\textbf{Status:} \textcolor{passcolor}{PASSED}\\
+\textbf{Duration:} 0 ms
+
+\textcolor{passcolor}{\checkmark~Test passed successfully}
+
+
+\subsection{Test 7: Auth Middleware Unit Tests authorize should reject request without user}
+\textbf{Status:} \textcolor{passcolor}{PASSED}\\
+\textbf{Duration:} 1 ms
+
+\textcolor{passcolor}{\checkmark~Test passed successfully}
+
+
+
+\section{Database Interactions}
+
+This test suite interacts with the following database tables:
+\begin{itemize}
+  \item \texttt{User}
+\end{itemize}
+
+\end{document}

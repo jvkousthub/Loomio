@@ -124,16 +124,44 @@ const createBulkNotifications = async (notifications) => {
     });
 
     // Send emails asynchronously
-    notifications.forEach(notif => {
-      const user = userMap[notif.user_id];
+    notifications.forEach(async (notification) => {
+      const user = userMap[notification.user_id];
       if (user) {
-        sendEmailIfEnabled(user, notif);
+        await sendEmailIfEnabled(user, notification).catch(err => {
+          console.error('Error sending email:', err);
+        });
       }
     });
 
     return createdNotifications;
   } catch (error) {
     console.error('Error creating bulk notifications:', error);
+    throw error;
+  }
+};
+
+/**
+ * Get user notifications with pagination
+ */
+const getUserNotifications = async (userId, options = {}) => {
+  try {
+    const { limit = 50, offset = 0, includeRead = true } = options;
+    
+    const where = { user_id: userId };
+    if (!includeRead) {
+      where.is_read = false;
+    }
+
+    const notifications = await Notification.findAll({
+      where,
+      limit,
+      offset,
+      order: [['created_at', 'DESC']]
+    });
+
+    return notifications;
+  } catch (error) {
+    console.error('Error fetching user notifications:', error);
     throw error;
   }
 };
@@ -530,6 +558,8 @@ const notifyMemberLeft = async (communityId, userName, communityName) => {
 module.exports = {
   createNotification,
   createBulkNotifications,
+  sendEmailIfEnabled,
+  getUserNotifications,
   getCommunityAdmins,
   getCommunityMembers,
   notifyTaskCreated,

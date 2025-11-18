@@ -1,0 +1,42 @@
+{
+  "id": "loomio-test-environment",
+  "name": "Loomio Test Environment",
+  "values": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000/api",
+      "enabled": true
+    },
+    {
+      "key": "auth_token",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "user_id",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "task_id",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "community_id",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "test_email",
+      "value": "test@example.com",
+      "enabled": true
+    },
+    {
+      "key": "test_password",
+      "value": "TestPassword123!",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment"
+}

@@ -1,0 +1,255 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+
+\geometry{margin=1in}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[height=0.5cm]{Loomio.png} Loomio Test Report}
+\rhead{2025-11-03T06-48-18}
+\cfoot{\thepage}
+
+\definecolor{passcolor}{RGB}{46, 125, 50}
+\definecolor{failcolor}{RGB}{198, 40, 40}
+\definecolor{skipcolor}{RGB}{255, 152, 0}
+\definecolor{codebackground}{RGB}{245, 245, 245}
+
+\lstset{
+  backgroundcolor=\color{codebackground},
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  showstringspaces=false
+}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,
+  urlcolor=cyan,
+  pdftitle={Loomio Test Report - 2025-11-03T06-48-18},
+  pdfauthor={Loomio Test Suite}
+}
+
+\title{
+  \includegraphics[width=3cm]{Loomio.png}\\
+  \vspace{0.5cm}
+  \textbf{Loomio Platform Test Report}
+}
+\author{
+  \textbf{Tested by:} J V Kousthub\\
+  \vspace{0.2cm}
+  \textbf{Date:} November 3, 2025\\
+  \textbf{Time:} 12:18:31 PM
+}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\vspace{1cm}
+\begin{center}
+\large
+\textbf{Database:} PostgreSQL on Render\\
+\textbf{Backend:} https://loomio.onrender.com
+\end{center}
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Executive Summary}
+
+\subsection{Test Run Overview}
+\begin{itemize}
+  \item \textbf{Run ID:} 1762152498287
+  \item \textbf{Start Time:} 2025-11-03T06:48:18.287Z
+  \item \textbf{Duration:} 12.88 seconds
+  \item \textbf{Environment:} test
+  \item \textbf{Node Version:} v22.12.0
+\end{itemize}
+
+\subsection{Results Summary}
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+\textbf{Metric} & \textbf{Count} \\
+\midrule
+Total Test Suites & 7 \\
+Passed Test Suites & \textcolor{passcolor}{7} \\
+Failed Test Suites & \textcolor{failcolor}{0} \\
+\midrule
+Total Tests & 45 \\
+Passed Tests & \textcolor{passcolor}{45} \\
+Failed Tests & \textcolor{failcolor}{0} \\
+Skipped Tests & \textcolor{skipcolor}{0} \\
+\midrule
+Success Rate & 100.00\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+\subsection{Overall Status}
+\textcolor{passcolor}{\textbf{PASSED}} - All tests passed successfully!
+
+
+\newpage
+\section{Test Suites}
+
+\subsection{authController.test.js}
+\begin{itemize}
+  \item \textbf{File:} \texttt{D:\textbackslash\{\}Loomio\textbackslash\{\}Loomio\textbackslash\{\}backend\textbackslash\{\}tests\textbackslash\{\}unit\textbackslash\{\}controllers\textbackslash\{\}authController.test.js}
+  \item \textbf{Total Tests:} 7
+  \item \textbf{Passed:} \textcolor{passcolor}{7}
+  \item \textbf{Failed:} \textcolor{failcolor}{0}
+  \item \textbf{Skipped:} \textcolor{skipcolor}{0}
+  \item \textbf{Success Rate:} 100.00\%
+\end{itemize}
+
+Detailed results available in: \texttt{controllers-authController-tests\_1762152498287.tex}
+
+\subsection{validation.test.js}
+\begin{itemize}
+  \item \textbf{File:} \texttt{D:\textbackslash\{\}Loomio\textbackslash\{\}Loomio\textbackslash\{\}backend\textbackslash\{\}tests\textbackslash\{\}unit\textbackslash\{\}middleware\textbackslash\{\}validation.test.js}
+  \item \textbf{Total Tests:} 8
+  \item \textbf{Passed:} \textcolor{passcolor}{8}
+  \item \textbf{Failed:} \textcolor{failcolor}{0}
+  \item \textbf{Skipped:} \textcolor{skipcolor}{0}
+  \item \textbf{Success Rate:} 100.00\%
+\end{itemize}
+
+Detailed results available in: \texttt{middleware-validation-tests\_1762152498287.tex}
+
+\subsection{authController.fixed.test.js}
+\begin{itemize}
+  \item \textbf{File:} \texttt{D:\textbackslash\{\}Loomio\textbackslash\{\}Loomio\textbackslash\{\}backend\textbackslash\{\}tests\textbackslash\{\}unit\textbackslash\{\}controllers\textbackslash\{\}authController.fixed.test.js}
+  \item \textbf{Total Tests:} 7
+  \item \textbf{Passed:} \textcolor{passcolor}{7}
+  \item \textbf{Failed:} \textcolor{failcolor}{0}
+  \item \textbf{Skipped:} \textcolor{skipcolor}{0}
+  \item \textbf{Success Rate:} 100.00\%
+\end{itemize}
+
+Detailed results available in: \texttt{controllers-authController-tests\_1762152498287.tex}
+
+\subsection{auth.fixed.test.js}
+\begin{itemize}
+  \item \textbf{File:} \texttt{D:\textbackslash\{\}Loomio\textbackslash\{\}Loomio\textbackslash\{\}backend\textbackslash\{\}tests\textbackslash\{\}unit\textbackslash\{\}middleware\textbackslash\{\}auth.fixed.test.js}
+  \item \textbf{Total Tests:} 4
+  \item \textbf{Passed:} \textcolor{passcolor}{4}
+  \item \textbf{Failed:} \textcolor{failcolor}{0}
+  \item \textbf{Skipped:} \textcolor{skipcolor}{0}
+  \item \textbf{Success Rate:} 100.00\%
+\end{itemize}
+
+Detailed results available in: \texttt{middleware-auth-tests\_1762152498287.tex}
+
+\subsection{Task.test.js}
+\begin{itemize}
+  \item \textbf{File:} \texttt{D:\textbackslash\{\}Loomio\textbackslash\{\}Loomio\textbackslash\{\}backend\textbackslash\{\}tests\textbackslash\{\}unit\textbackslash\{\}models\textbackslash\{\}Task.test.js}
+  \item \textbf{Total Tests:} 8
+  \item \textbf{Passed:} \textcolor{passcolor}{8}
+  \item \textbf{Failed:} \textcolor{failcolor}{0}
+  \item \textbf{Skipped:} \textcolor{skipcolor}{0}
+  \item \textbf{Success Rate:} 100.00\%
+\end{itemize}
+
+Detailed results available in: \texttt{models-Task-tests\_1762152498287.tex}
+
+\subsection{auth.test.js}
+\begin{itemize}
+  \item \textbf{File:} \texttt{D:\textbackslash\{\}Loomio\textbackslash\{\}Loomio\textbackslash\{\}backend\textbackslash\{\}tests\textbackslash\{\}unit\textbackslash\{\}middleware\textbackslash\{\}auth.test.js}
+  \item \textbf{Total Tests:} 7
+  \item \textbf{Passed:} \textcolor{passcolor}{7}
+  \item \textbf{Failed:} \textcolor{failcolor}{0}
+  \item \textbf{Skipped:} \textcolor{skipcolor}{0}
+  \item \textbf{Success Rate:} 100.00\%
+\end{itemize}
+
+Detailed results available in: \texttt{middleware-auth-tests\_1762152498287.tex}
+
+\subsection{notificationService.test.js}
+\begin{itemize}
+  \item \textbf{File:} \texttt{D:\textbackslash\{\}Loomio\textbackslash\{\}Loomio\textbackslash\{\}backend\textbackslash\{\}tests\textbackslash\{\}unit\textbackslash\{\}services\textbackslash\{\}notificationService.test.js}
+  \item \textbf{Total Tests:} 4
+  \item \textbf{Passed:} \textcolor{passcolor}{4}
+  \item \textbf{Failed:} \textcolor{failcolor}{0}
+  \item \textbf{Skipped:} \textcolor{skipcolor}{0}
+  \item \textbf{Success Rate:} 100.00\%
+\end{itemize}
+
+Detailed results available in: \texttt{services-notificationService-tests\_1762152498287.tex}
+
+
+\newpage
+\section{Database Schema}
+
+The database schema used for testing is documented in a separate file: \texttt{db\_schema\_1762152498287.tex}
+
+See Section \ref{sec:db-tables} for table details.
+
+\section{Failed Tests}
+\textcolor{passcolor}{No failed tests! All tests passed successfully.}
+
+\section{Performance Metrics}
+
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Average Suite Duration & 2258.00 ms \\
+Total Test Suites & 7 \\
+Slowest Suite & 2493.00 ms \\
+Fastest Suite & 1823.00 ms \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+\section{Recommendations}
+
+\subsection{Action Items}
+\begin{itemize}
+
+
+  \item Review test coverage and add missing test cases
+  \item Ensure all database models are properly tested
+  \item Update integration tests for new API endpoints
+\end{itemize}
+
+\section{Appendix}
+
+\subsection{Environment Variables}
+\begin{itemize}
+  \item NODE\_ENV: test
+  \item DB\_NAME: loomio\_db\_7vrw
+  \item JWT\_SECRET: [CONFIGURED]
+\end{itemize}
+
+\subsection{Related Documents}
+\begin{itemize}
+  \item Database Schema Report: \texttt{db\_schema\_1762152498287.tex}
+  \item controllers-authController-tests: \texttt{controllers-authController-tests\_1762152498287.tex}
+  \item middleware-validation-tests: \texttt{middleware-validation-tests\_1762152498287.tex}
+  \item controllers-authController-tests: \texttt{controllers-authController-tests\_1762152498287.tex}
+  \item middleware-auth-tests: \texttt{middleware-auth-tests\_1762152498287.tex}
+  \item models-Task-tests: \texttt{models-Task-tests\_1762152498287.tex}
+  \item middleware-auth-tests: \texttt{middleware-auth-tests\_1762152498287.tex}
+  \item services-notificationService-tests: \texttt{services-notificationService-tests\_1762152498287.tex}
+\end{itemize}
+
+\end{document}

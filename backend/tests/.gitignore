@@ -1,0 +1,35 @@
+# Ignore test results and generated files
+coverage/
+*.log
+node_modules/
+
+# Test results
+tests/api/results/*.html
+tests/api/results/*.json
+tests/load/results/*.html
+tests/load/results/*.csv
+tests/load/results/*.log
+
+# Test reports (keep reports directory structure but ignore generated files)
+reports/*.html
+reports/*.md
+reports/*.json
+!reports/README.md
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+env/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

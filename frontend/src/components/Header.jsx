@@ -49,7 +49,7 @@ const Header = ({ onMenuClick }) => {
   };
 
   const handleViewAllNotifications = () => {
-    navigate('/notifications');
+    navigate('/app/notifications');
     setShowNotifications(false);
   };
 

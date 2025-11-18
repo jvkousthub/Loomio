@@ -12,6 +12,7 @@ const TaskTag = require('./TaskTag');
 const TaskTagAssignment = require('./TaskTagAssignment');
 const Subtask = require('./Subtask');
 const UserStatistics = require('./UserStatistics');
+const sequelize = require('../config/database');
 
 // User-Community many-to-many associations
 User.belongsToMany(Community, { 
@@ -115,6 +116,7 @@ UserStatistics.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
 UserStatistics.belongsTo(Community, { foreignKey: 'community_id', as: 'community' });
 
 module.exports = {
+  sequelize,
   User,
   Community,
   UserCommunity,

@@ -1,0 +1,150 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+
+\geometry{margin=1in}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[height=0.4cm]{Loomio.png} middleware-validation-tests}
+\rhead{2025-11-03T06-48-18}
+\cfoot{\thepage}
+
+\definecolor{passcolor}{RGB}{46, 125, 50}
+\definecolor{failcolor}{RGB}{198, 40, 40}
+\definecolor{skipcolor}{RGB}{255, 152, 0}
+\definecolor{codebackground}{RGB}{245, 245, 245}
+
+\lstset{
+  backgroundcolor=\color{codebackground},
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  showstringspaces=false
+}
+
+\title{
+  \includegraphics[width=2.5cm]{Loomio.png}\\
+  \vspace{0.3cm}
+  \textbf{Test Suite Report}\\
+  validation.test.js
+}
+\author{
+  \textbf{Tested by:} J V Kousthub\\
+  \vspace{0.2cm}
+  \textbf{Date:} November 3, 2025\\
+  \textbf{Time:} 12:18:31 PM
+}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\vspace{0.5cm}
+\begin{center}
+\textbf{Database:} PostgreSQL on Render\\
+\textbf{Backend:} https://loomio.onrender.com
+\end{center}
+
+\newpage
+
+\section{Suite Information}
+\begin{itemize}
+  \item \textbf{File:} \texttt{D:\textbackslash\{\}Loomio\textbackslash\{\}Loomio\textbackslash\{\}backend\textbackslash\{\}tests\textbackslash\{\}unit\textbackslash\{\}middleware\textbackslash\{\}validation.test.js}
+  \item \textbf{Run ID:} 1762152498287
+  \item \textbf{Execution Time:} 2118 ms
+\end{itemize}
+
+\section{Test Results Summary}
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+\textbf{Status} & \textbf{Count} \\
+\midrule
+\textcolor{passcolor}{Passed} & 8 \\
+\textcolor{failcolor}{Failed} & 0 \\
+\textcolor{skipcolor}{Skipped} & 0 \\
+\midrule
+Total & 8 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Individual Test Cases}
+
+\subsection{Test 1: Validation Middleware Unit Tests validateTaskCreate should pass validation with valid data}
+\textbf{Status:} \textcolor{passcolor}{PASSED}\\
+\textbf{Duration:} 18 ms
+
+\textcolor{passcolor}{\checkmark~Test passed successfully}
+
+
+\subsection{Test 2: Validation Middleware Unit Tests validateTaskCreate should fail validation without title}
+\textbf{Status:} \textcolor{passcolor}{PASSED}\\
+\textbf{Duration:} 1 ms
+
+\textcolor{passcolor}{\checkmark~Test passed successfully}
+
+
+\subsection{Test 3: Validation Middleware Unit Tests validateTaskCreate should fail validation with invalid status}
+\textbf{Status:} \textcolor{passcolor}{PASSED}\\
+\textbf{Duration:} 1 ms
+
+\textcolor{passcolor}{\checkmark~Test passed successfully}
+
+
+\subsection{Test 4: Validation Middleware Unit Tests validateTaskCreate should fail validation with invalid priority}
+\textbf{Status:} \textcolor{passcolor}{PASSED}\\
+\textbf{Duration:} 0 ms
+
+\textcolor{passcolor}{\checkmark~Test passed successfully}
+
+
+\subsection{Test 5: Validation Middleware Unit Tests Email Validation should validate correct email format}
+\textbf{Status:} \textcolor{passcolor}{PASSED}\\
+\textbf{Duration:} 2 ms
+
+\textcolor{passcolor}{\checkmark~Test passed successfully}
+
+
+\subsection{Test 6: Validation Middleware Unit Tests Email Validation should reject invalid email format}
+\textbf{Status:} \textcolor{passcolor}{PASSED}\\
+\textbf{Duration:} 2 ms
+
+\textcolor{passcolor}{\checkmark~Test passed successfully}
+
+
+\subsection{Test 7: Validation Middleware Unit Tests Password Validation should validate strong password}
+\textbf{Status:} \textcolor{passcolor}{PASSED}\\
+\textbf{Duration:} 1 ms
+
+\textcolor{passcolor}{\checkmark~Test passed successfully}
+
+
+\subsection{Test 8: Validation Middleware Unit Tests Password Validation should reject weak password}
+\textbf{Status:} \textcolor{passcolor}{PASSED}\\
+\textbf{Duration:} 1 ms
+
+\textcolor{passcolor}{\checkmark~Test passed successfully}
+
+
+
+\section{Database Interactions}
+
+This test suite interacts with the following database tables:
+\begin{itemize}
+  \item \texttt{Task}
+\end{itemize}
+
+\end{document}

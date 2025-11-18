@@ -21,6 +21,16 @@ const sequelize = process.env.DATABASE_URL
         min: 0,
         acquire: 30000,
         idle: 10000
+      },
+      // Force IPv4 to avoid IPv6 connection issues on Render/Supabase
+      host: process.env.DATABASE_URL ? new URL(process.env.DATABASE_URL).hostname : undefined,
+      dialectOptions: {
+        ssl: process.env.NODE_ENV === 'production' ? {
+          require: true,
+          rejectUnauthorized: false
+        } : false,
+        // Disable IPv6
+        family: 4
       }
     })
   : new Sequelize(
@@ -35,7 +45,9 @@ const sequelize = process.env.DATABASE_URL
           ssl: process.env.NODE_ENV === 'production' ? {
             require: true,
             rejectUnauthorized: false
-          } : false
+          } : false,
+          // Disable IPv6
+          family: 4
         },
         logging: process.env.NODE_ENV === 'development' ? console.log : false,
         pool: {
