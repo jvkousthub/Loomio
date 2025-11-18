@@ -624,7 +624,7 @@ const Tasks = () => {
 
                       {/* Action buttons */}
                       <div className="flex items-center space-x-2" onClick={(e) => e.stopPropagation()}>
-                        {isAssignedToUser && !['completed', 'submitted'].includes(task.status) && (
+                        {isAssignedToUser && !['completed', 'submitted', 'rejected'].includes(userAssignment?.status || task.status) && (
                           <button
                             onClick={() => handleRevokeTask(task.task_id)}
                             className="flex-1 px-3 py-1 text-sm bg-red-100 text-red-700 hover:bg-red-200 rounded-lg font-medium transition-colors"
@@ -1460,7 +1460,7 @@ const Tasks = () => {
                               </button>
                             )}
 
-                            {isAssignedToUser && !['completed', 'submitted'].includes(selectedTask.status) && (
+                            {isAssignedToUser && !['completed', 'submitted', 'rejected'].includes(userAssignment?.status || selectedTask.status) && (
                               <button
                                 onClick={() => {
                                   handleRevokeTask(selectedTask.task_id);
