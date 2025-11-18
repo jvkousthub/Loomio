@@ -238,6 +238,8 @@ const Tasks = () => {
       setIsLoading(true);
       const response = await api.put(`/tasks/${taskId}/status`, { status });
       setSuccess(response.data.message);
+      setShowTaskDetailModal(false); // Close modal immediately
+      setSelectedTask(null); // Clear selected task
       fetchTasks();
     } catch (err) {
       console.error('Update task status error:', err);
