@@ -81,6 +81,7 @@ app.use('/api/leaderboard', require('./routes/leaderboard'));
 app.use('/api/statistics', require('./routes/statistics'));
 app.use('/api/tags', require('./routes/tags'));
 app.use('/api/subtasks', require('./routes/subtasks'));
+app.use('/api/monitoring', require('./routes/monitoring'));
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
