@@ -81,35 +81,65 @@ const getPlatformAnalytics = async (req, res) => {
     });
 
     // Get user growth data for last 6 months
-    const userGrowthData = await User.findAll({
-      attributes: [
-        [getDateFormat(Sequelize.col('created_at'), '%Y-%m'), 'month'],
-        [Sequelize.fn('COUNT', Sequelize.col('user_id')), 'count']
-      ],
-      where: {
-        created_at: {
-          [Op.gte]: new Date(Date.now() - 6 * 30 * 24 * 60 * 60 * 1000) // Last 6 months
-        }
-      },
-      group: [getDateFormat(Sequelize.col('created_at'), '%Y-%m')],
-      order: [[getDateFormat(Sequelize.col('created_at'), '%Y-%m'), 'ASC']]
-    });
+    const dialect = sequelize.getDialect();
+    let userGrowthData;
+    
+    if (dialect === 'postgres') {
+      userGrowthData = await sequelize.query(`
+        SELECT 
+          TO_CHAR(created_at, 'YYYY-MM') as month,
+          COUNT(user_id)::integer as count
+        FROM "Users"
+        WHERE created_at >= NOW() - INTERVAL '6 months'
+        GROUP BY TO_CHAR(created_at, 'YYYY-MM')
+        ORDER BY month ASC
+      `, { type: Sequelize.QueryTypes.SELECT });
+    } else {
+      userGrowthData = await User.findAll({
+        attributes: [
+          [Sequelize.fn('DATE_FORMAT', Sequelize.col('created_at'), '%Y-%m'), 'month'],
+          [Sequelize.fn('COUNT', Sequelize.col('user_id')), 'count']
+        ],
+        where: {
+          created_at: {
+            [Op.gte]: new Date(Date.now() - 6 * 30 * 24 * 60 * 60 * 1000)
+          }
+        },
+        group: [Sequelize.fn('DATE_FORMAT', Sequelize.col('created_at'), '%Y-%m')],
+        order: [[Sequelize.fn('DATE_FORMAT', Sequelize.col('created_at'), '%Y-%m'), 'ASC']]
+      });
+    }
 
     // Get task completion rate over time
-    const taskCompletionData = await Task.findAll({
-      attributes: [
-        [getDateFormat(Sequelize.col('created_at'), '%Y-%m'), 'month'],
-        [Sequelize.fn('COUNT', Sequelize.col('task_id')), 'totalTasks'],
-        [Sequelize.fn('SUM', Sequelize.literal('CASE WHEN status = \'completed\' THEN 1 ELSE 0 END')), 'completedTasks']
-      ],
-      where: {
-        created_at: {
-          [Op.gte]: new Date(Date.now() - 6 * 30 * 24 * 60 * 60 * 1000) // Last 6 months
-        }
-      },
-      group: [getDateFormat(Sequelize.col('created_at'), '%Y-%m')],
-      order: [[getDateFormat(Sequelize.col('created_at'), '%Y-%m'), 'ASC']]
-    });
+    let taskCompletionData;
+    
+    if (dialect === 'postgres') {
+      taskCompletionData = await sequelize.query(`
+        SELECT 
+          TO_CHAR(created_at, 'YYYY-MM') as month,
+          COUNT(task_id)::integer as "totalTasks",
+          SUM(CASE WHEN status = 'completed' THEN 1 ELSE 0 END)::integer as "completedTasks"
+        FROM "Tasks"
+        WHERE created_at >= NOW() - INTERVAL '6 months'
+        GROUP BY TO_CHAR(created_at, 'YYYY-MM')
+        ORDER BY month ASC
+      `, { type: Sequelize.QueryTypes.SELECT });
+    } else {
+      taskCompletionData = await Task.findAll({
+        attributes: [
+          [Sequelize.fn('DATE_FORMAT', Sequelize.col('created_at'), '%Y-%m'), 'month'],
+          [Sequelize.fn('COUNT', Sequelize.col('task_id')), 'totalTasks'],
+          [Sequelize.fn('SUM', Sequelize.literal('CASE WHEN status = \'completed\' THEN 1 ELSE 0 END')), 'completedTasks']
+        ],
+        where: {
+          created_at: {
+            [Op.gte]: new Date(Date.now() - 6 * 30 * 24 * 60 * 60 * 1000)
+          }
+        },
+        group: [Sequelize.fn('DATE_FORMAT', Sequelize.col('created_at'), '%Y-%m')],
+        order: [[Sequelize.fn('DATE_FORMAT', Sequelize.col('created_at'), '%Y-%m'), 'ASC']]
+      });
+    }
 
     // Get top contributors
     const topContributors = await User.findAll({
@@ -154,16 +184,27 @@ const getPlatformAnalytics = async (req, res) => {
         ...community.toJSON(),
         memberCount: parseInt(community.dataValues.memberCount) || 0
       })),
-      userGrowthData: userGrowthData.map(item => ({
-        month: item.dataValues.month,
-        count: parseInt(item.dataValues.count)
-      })),
-      taskCompletionData: taskCompletionData.map(item => ({
-        month: item.dataValues.month,
-        totalTasks: parseInt(item.dataValues.totalTasks),
-        completedTasks: parseInt(item.dataValues.completedTasks),
-        completionRate: Math.round((parseInt(item.dataValues.completedTasks) / parseInt(item.dataValues.totalTasks)) * 100) || 0
-      })),
+      userGrowthData: userGrowthData.map(item => {
+        // Handle both Sequelize model and raw query results
+        const month = item.month || item.dataValues?.month;
+        const count = item.count || item.dataValues?.count;
+        return {
+          month,
+          count: parseInt(count)
+        };
+      }),
+      taskCompletionData: taskCompletionData.map(item => {
+        // Handle both Sequelize model and raw query results
+        const month = item.month || item.dataValues?.month;
+        const totalTasks = item.totalTasks || item.dataValues?.totalTasks;
+        const completedTasks = item.completedTasks || item.dataValues?.completedTasks;
+        return {
+          month,
+          totalTasks: parseInt(totalTasks),
+          completedTasks: parseInt(completedTasks),
+          completionRate: Math.round((parseInt(completedTasks) / parseInt(totalTasks)) * 100) || 0
+        };
+      }),
       topContributors: topContributors.map(user => ({
         ...user.toJSON(),
         completedTasks: parseInt(user.dataValues.completedTasks) || 0

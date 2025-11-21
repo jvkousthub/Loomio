@@ -11,7 +11,13 @@ import {
   CalendarIcon,
   ChatBubbleLeftRightIcon,
   SunIcon,
-  MoonIcon
+  MoonIcon,
+  UserIcon,
+  ShieldCheckIcon,
+  ArrowRightIcon,
+  PlusCircleIcon,
+  ClipboardDocumentCheckIcon,
+  EyeIcon
 } from '@heroicons/react/24/outline';
 import loomioLogo from '../assets/Loomio.png';
 
@@ -215,6 +221,269 @@ const Home = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Getting Started Guide Section */}
+      <section className="py-16 sm:py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-12 sm:mb-16">
+            <div className="inline-block mb-4">
+              <span className="text-sm font-bold text-primary-600 dark:text-primary-400 uppercase tracking-wider">Getting Started</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
+              Your Journey with Loomio
+            </h2>
+            <p className="text-base sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
+              Whether you're a member or an admin, follow these simple steps to get the most out of Loomio
+            </p>
+          </div>
+
+          {/* Toggle between User and Admin Guide */}
+          <div className="flex justify-center mb-12">
+            <div className="inline-flex bg-gray-100 dark:bg-gray-800 rounded-2xl p-1.5 shadow-lg">
+              <button 
+                onClick={(e) => {
+                  document.getElementById('user-guide').classList.remove('hidden');
+                  document.getElementById('admin-guide').classList.add('hidden');
+                  e.currentTarget.classList.add('bg-white', 'dark:bg-gray-700', 'shadow-md');
+                  e.currentTarget.classList.remove('text-gray-600', 'dark:text-gray-400');
+                  document.getElementById('admin-btn').classList.remove('bg-white', 'dark:bg-gray-700', 'shadow-md');
+                  document.getElementById('admin-btn').classList.add('text-gray-600', 'dark:text-gray-400');
+                }}
+                className="flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 bg-white dark:bg-gray-700 shadow-md text-gray-900 dark:text-white"
+              >
+                <UserIcon className="h-5 w-5" />
+                <span>For Members</span>
+              </button>
+              <button 
+                id="admin-btn"
+                onClick={(e) => {
+                  document.getElementById('admin-guide').classList.remove('hidden');
+                  document.getElementById('user-guide').classList.add('hidden');
+                  e.currentTarget.classList.add('bg-white', 'dark:bg-gray-700', 'shadow-md');
+                  e.currentTarget.classList.remove('text-gray-600', 'dark:text-gray-400');
+                  document.querySelectorAll('button')[document.querySelectorAll('button').length - 2].classList.remove('bg-white', 'dark:bg-gray-700', 'shadow-md');
+                  document.querySelectorAll('button')[document.querySelectorAll('button').length - 2].classList.add('text-gray-600', 'dark:text-gray-400');
+                }}
+                className="flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 text-gray-600 dark:text-gray-400"
+              >
+                <ShieldCheckIcon className="h-5 w-5" />
+                <span>For Admins</span>
+              </button>
+            </div>
+          </div>
+
+          {/* User Guide */}
+          <div id="user-guide" className="space-y-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {/* Step 1 */}
+              <div className="group relative bg-gradient-to-br from-primary-50 to-white dark:from-gray-800 dark:to-gray-800/50 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-primary-200 dark:border-primary-800 hover:-translate-y-2">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                  1
+                </div>
+                <div className="mt-4">
+                  <div className="inline-flex p-4 bg-gradient-to-br from-primary-100 to-accent-100 dark:from-primary-900/50 dark:to-accent-900/50 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <UserIcon className="h-8 w-8 text-primary-600 dark:text-primary-400" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Create Your Account</h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                    Sign up with your email and complete your profile. Add a profile picture and bio to help your community recognize you.
+                  </p>
+                  <div className="flex items-center text-sm text-primary-600 dark:text-primary-400 font-semibold">
+                    <span>Takes 2 minutes</span>
+                    <ArrowRightIcon className="h-4 w-4 ml-2" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 2 */}
+              <div className="group relative bg-gradient-to-br from-accent-50 to-white dark:from-gray-800 dark:to-gray-800/50 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-accent-200 dark:border-accent-800 hover:-translate-y-2">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                  2
+                </div>
+                <div className="mt-4">
+                  <div className="inline-flex p-4 bg-gradient-to-br from-accent-100 to-primary-100 dark:from-accent-900/50 dark:to-primary-900/50 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <UserGroupIcon className="h-8 w-8 text-accent-600 dark:text-accent-400" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Join a Community</h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                    Browse available communities or wait for an invitation. Join communities that align with your interests and goals.
+                  </p>
+                  <div className="flex items-center text-sm text-accent-600 dark:text-accent-400 font-semibold">
+                    <span>Instant access</span>
+                    <ArrowRightIcon className="h-4 w-4 ml-2" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="group relative bg-gradient-to-br from-primary-50 to-white dark:from-gray-800 dark:to-gray-800/50 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-primary-200 dark:border-primary-800 hover:-translate-y-2">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                  3
+                </div>
+                <div className="mt-4">
+                  <div className="inline-flex p-4 bg-gradient-to-br from-primary-100 to-accent-100 dark:from-primary-900/50 dark:to-accent-900/50 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <EyeIcon className="h-8 w-8 text-primary-600 dark:text-primary-400" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">View Assigned Tasks</h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                    Check your dashboard for tasks assigned to you. Filter by status, priority, and deadline to stay organized.
+                  </p>
+                  <div className="flex items-center text-sm text-primary-600 dark:text-primary-400 font-semibold">
+                    <span>Real-time updates</span>
+                    <ArrowRightIcon className="h-4 w-4 ml-2" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 4 */}
+              <div className="group relative bg-gradient-to-br from-accent-50 to-white dark:from-gray-800 dark:to-gray-800/50 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-accent-200 dark:border-accent-800 hover:-translate-y-2">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                  4
+                </div>
+                <div className="mt-4">
+                  <div className="inline-flex p-4 bg-gradient-to-br from-accent-100 to-primary-100 dark:from-accent-900/50 dark:to-primary-900/50 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <CheckCircleIcon className="h-8 w-8 text-accent-600 dark:text-accent-400" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Accept & Complete Tasks</h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                    Accept group tasks, update progress, and submit completed work. Add comments to keep everyone informed.
+                  </p>
+                  <div className="flex items-center text-sm text-accent-600 dark:text-accent-400 font-semibold">
+                    <span>Track progress</span>
+                    <ArrowRightIcon className="h-4 w-4 ml-2" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 5 */}
+              <div className="group relative bg-gradient-to-br from-primary-50 to-white dark:from-gray-800 dark:to-gray-800/50 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-primary-200 dark:border-primary-800 hover:-translate-y-2">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                  5
+                </div>
+                <div className="mt-4">
+                  <div className="inline-flex p-4 bg-gradient-to-br from-primary-100 to-accent-100 dark:from-primary-900/50 dark:to-accent-900/50 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <TrophyIcon className="h-8 w-8 text-primary-600 dark:text-primary-400" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Earn Points & Rank Up</h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                    Complete tasks to earn points and climb the leaderboard. View your statistics and celebrate your achievements.
+                  </p>
+                  <div className="flex items-center text-sm text-primary-600 dark:text-primary-400 font-semibold">
+                    <span>Build your reputation</span>
+                    <ArrowRightIcon className="h-4 w-4 ml-2" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Admin Guide */}
+          <div id="admin-guide" className="hidden space-y-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {/* Admin Step 1 */}
+              <div className="group relative bg-gradient-to-br from-purple-50 to-white dark:from-gray-800 dark:to-gray-800/50 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-purple-200 dark:border-purple-800 hover:-translate-y-2">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                  1
+                </div>
+                <div className="mt-4">
+                  <div className="inline-flex p-4 bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-900/50 dark:to-indigo-900/50 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <PlusCircleIcon className="h-8 w-8 text-purple-600 dark:text-purple-400" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Create Your Community</h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                    Set up your community with a name, description, and guidelines. Customize settings to match your community's needs.
+                  </p>
+                  <div className="flex items-center text-sm text-purple-600 dark:text-purple-400 font-semibold">
+                    <span>Quick setup</span>
+                    <ArrowRightIcon className="h-4 w-4 ml-2" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Admin Step 2 */}
+              <div className="group relative bg-gradient-to-br from-indigo-50 to-white dark:from-gray-800 dark:to-gray-800/50 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-indigo-200 dark:border-indigo-800 hover:-translate-y-2">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                  2
+                </div>
+                <div className="mt-4">
+                  <div className="inline-flex p-4 bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-900/50 dark:to-purple-900/50 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <UserGroupIcon className="h-8 w-8 text-indigo-600 dark:text-indigo-400" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Invite Members</h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                    Send invitations via email or share your community link. Review and approve join requests from interested members.
+                  </p>
+                  <div className="flex items-center text-sm text-indigo-600 dark:text-indigo-400 font-semibold">
+                    <span>Grow your team</span>
+                    <ArrowRightIcon className="h-4 w-4 ml-2" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Admin Step 3 */}
+              <div className="group relative bg-gradient-to-br from-purple-50 to-white dark:from-gray-800 dark:to-gray-800/50 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-purple-200 dark:border-purple-800 hover:-translate-y-2">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                  3
+                </div>
+                <div className="mt-4">
+                  <div className="inline-flex p-4 bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-900/50 dark:to-indigo-900/50 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <ClipboardDocumentCheckIcon className="h-8 w-8 text-purple-600 dark:text-purple-400" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Create Tasks</h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                    Create individual or group tasks with clear descriptions, deadlines, and point values. Assign tasks strategically.
+                  </p>
+                  <div className="flex items-center text-sm text-purple-600 dark:text-purple-400 font-semibold">
+                    <span>Define work clearly</span>
+                    <ArrowRightIcon className="h-4 w-4 ml-2" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Admin Step 4 */}
+              <div className="group relative bg-gradient-to-br from-indigo-50 to-white dark:from-gray-800 dark:to-gray-800/50 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-indigo-200 dark:border-indigo-800 hover:-translate-y-2">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                  4
+                </div>
+                <div className="mt-4">
+                  <div className="inline-flex p-4 bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-900/50 dark:to-purple-900/50 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <CheckCircleIcon className="h-8 w-8 text-indigo-600 dark:text-indigo-400" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Review Submissions</h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                    Review completed tasks, provide feedback, and approve or request revisions. Ensure quality standards are met.
+                  </p>
+                  <div className="flex items-center text-sm text-indigo-600 dark:text-indigo-400 font-semibold">
+                    <span>Maintain quality</span>
+                    <ArrowRightIcon className="h-4 w-4 ml-2" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Admin Step 5 */}
+              <div className="group relative bg-gradient-to-br from-purple-50 to-white dark:from-gray-800 dark:to-gray-800/50 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-purple-200 dark:border-purple-800 hover:-translate-y-2">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                  5
+                </div>
+                <div className="mt-4">
+                  <div className="inline-flex p-4 bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-900/50 dark:to-indigo-900/50 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <ChartBarIcon className="h-8 w-8 text-purple-600 dark:text-purple-400" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Monitor Analytics</h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                    Track community performance, member contributions, and task completion rates. Use data to make informed decisions.
+                  </p>
+                  <div className="flex items-center text-sm text-purple-600 dark:text-purple-400 font-semibold">
+                    <span>Data-driven insights</span>
+                    <ArrowRightIcon className="h-4 w-4 ml-2" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
